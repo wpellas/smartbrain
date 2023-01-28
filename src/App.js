@@ -26,8 +26,26 @@ class App extends Component{
       imageUrl: '',
       box: {},
       route: 'signin',
-      isSignedIn: false
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
     }
+  }
+
+  // Loads user data
+  loadUser = (data) => {
+    this.setState({user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined
+    }})
   }
 
   // Functions that are later passed on to other components.
@@ -90,6 +108,19 @@ class App extends Component{
       
       .then((response) => response.text())
       .then((result) => {
+        if (result) {
+          fetch('http://localhost:3000/image', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: this.state.user.id
+            })
+          })
+          .then(reponse => reponse.json())
+          .then(count => {
+            this.setState(Object.assign(this.state.user, { entries: count }))
+          })
+        }
         const { outputs } = JSON.parse(result);
         const { regions } = outputs[0].data;
         const { bounding_box } = regions[0].region_info;
@@ -119,7 +150,7 @@ class App extends Component{
         { route === 'home'
           ? <div>
               <Logo />
-              <Rank />
+              <Rank name={this.state.user.name} entries={this.state.user.entries}/>
               <ImageLinkForm 
                 onInputchange={this.onInputchange} 
                 onButtonSubmit={this.onButtonSubmit}
@@ -128,8 +159,8 @@ class App extends Component{
             </div>
           : (
             route === 'signin'
-            ? <Signin onRouteChange={this.onRouteChange} />
-            : <Register onRouteChange={this.onRouteChange}/>
+            ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+            : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
           )
         }
       </div>
