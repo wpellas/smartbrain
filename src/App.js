@@ -17,24 +17,26 @@ const clarifai = {
   MODEL_VERSION_ID: '45fb9a671625463fa646c3523a3087d5'
 }
 
+const initialState = {
+  input: '',
+  imageUrl: '',
+  box: {},
+  route: 'signin',
+  isSignedIn: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: ''
+  }
+}
+
 class App extends Component{
   // JavaScript
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {},
-      route: 'signin',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: ''
-      }
-    }
+    this.state = initialState;
   }
 
   // Loads user data
@@ -64,7 +66,6 @@ class App extends Component{
   }
 
   displayFaceBox = (box) => {
-    console.log(box);
     this.setState({ box: box })
   }
 
@@ -120,20 +121,19 @@ class App extends Component{
           .then(count => {
             this.setState(Object.assign(this.state.user, { entries: count }))
           })
+          .catch(console.log)
         }
         const { outputs } = JSON.parse(result);
         const { regions } = outputs[0].data;
         const { bounding_box } = regions[0].region_info;
-        // console.log(bounding_box);
         this.displayFaceBox(this.calculateFaceLocation(bounding_box));
       })
-      // .then(response => this.calculateFaceLocation(response))
-      // .catch(err => console.log(err));
+      .catch(err => console.log(err));
   }
 
   onRouteChange = (route) => {
     if (route === 'signout') {
-      this.setState({isSignedIn: false})
+      this.setState(initialState)
     } else if (route === 'home') {
       this.setState({isSignedIn: true})
     }
@@ -150,7 +150,10 @@ class App extends Component{
         { route === 'home'
           ? <div>
               <Logo />
-              <Rank name={this.state.user.name} entries={this.state.user.entries}/>
+              <Rank 
+                name={this.state.user.name} 
+                entries={this.state.user.entries}
+              />
               <ImageLinkForm 
                 onInputchange={this.onInputchange} 
                 onButtonSubmit={this.onButtonSubmit}
