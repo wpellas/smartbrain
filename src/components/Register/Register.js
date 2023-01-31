@@ -34,7 +34,7 @@ class Register extends React.Component {
         })
             .then(response => response.json())
             .then(user => {
-                if (user) {
+                if (user.id) {
                     this.props.loadUser(user);
                     this.props.onRouteChange('home');
                 }
@@ -50,13 +50,14 @@ class Register extends React.Component {
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="f2 fw6 ph0 mh0 center">Register</legend>
                             <div className="mt3">
-                                <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+                                <label className="db fw6 lh-copy f6" htmlFor="name">Username</label>
                                 <input 
                                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 white" 
                                 type="text" 
                                 name="name"  
                                 id="name"
                                 onChange={this.onNameChange}
+                                placeholder="username"
                                 />
                             </div>
                             <div className="mt3">
@@ -67,6 +68,7 @@ class Register extends React.Component {
                                 name="email-address"  
                                 id="email-address"
                                 onChange={this.onEmailChange}
+                                placeholder="name@example.com"
                                 />
                             </div>
                             <div className="mv3">
@@ -77,6 +79,7 @@ class Register extends React.Component {
                                 name="password"  
                                 id="password"
                                 onChange={this.onPasswordChange}
+                                placeholder="password"
                                 />
                         </div>
                     </fieldset>
