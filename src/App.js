@@ -66,7 +66,7 @@ class App extends Component{
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch('http://localhost:3000/imageurl', {
+    fetch('https://smartbrain-api-pi.vercel.app/imageurl', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -76,7 +76,7 @@ class App extends Component{
       .then(response => response.text())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3000/image', {
+          fetch('https://smartbrain-api-pi.vercel.app/image', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -135,7 +135,7 @@ class App extends Component{
           )
         }
         <div className="footer">
-          <p className='footerText'>Made by <a href='https://williampellas.com/'>William Pellas</a>, using <a href='https://reactjs.org/'>React</a> for the 'The Complete Web Developer in 2023: Zero to Mastery' course from Zero to Mastery. Check out this projects GitHub <a href="https://github.com/wpellas/smartbrain">here</a>.</p>
+          <p className='footerText'>Made by <a href='https://williampellas.com/'>William Pellas</a>, using <a href='https://reactjs.org/'>React</a> for the 'The Complete Web Developer in 2023: Zero to Mastery' course from Zero to Mastery. Check out this projects GitHub repo <a href="https://github.com/wpellas/smartbrain">here</a>.</p>
         </div>
       </div>
     );
