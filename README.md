@@ -8,4 +8,4 @@ You can register an account which passes the info through an express.js (node) s
 
 ### Can I try it?
 
-A url will soon be available with a finished build!
+https://williampellas.com/smartbrain/
