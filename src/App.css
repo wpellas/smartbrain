@@ -7,7 +7,7 @@ html {
     text-align: center;
 }
 .appContainer {
-    max-width: 60rem;
+    max-width: 40rem;
     margin: 0 auto;
 }
 .center {
@@ -37,3 +37,10 @@ html {
     text-decoration: none;
     color: #abffff;
 }
+
+@media screen
+    and (max-width: 800px) {
+        .footerText {
+            font-size: .8rem;
+        }
+    }

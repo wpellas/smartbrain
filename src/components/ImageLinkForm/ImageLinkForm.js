@@ -5,10 +5,10 @@ import './ImageLinkForm.css';
 const ImageLinkForm = ({ onInputchange, onButtonSubmit }) => {
     return (
        <div className="imageLinkFormContainer">
-        <p className="f3 white">
+        <p className="imageLinkFormText white">
             {'This app will detect faces in an image, try inputting a URL in the textfield and hit Detect!'}
         </p>
-        <div className="center">
+        <div className="center imageBox">
             <div className="form center pa4 br3 shadow-5">
                 <input className="f4 pa2 w-70 center" type="text" onChange={onInputchange}/>
                 <button 

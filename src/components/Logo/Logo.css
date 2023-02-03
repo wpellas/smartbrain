@@ -1,7 +1,7 @@
 .tiltContainer {
     position: fixed;
-    height: 15rem;
-    width: 15rem;
+    max-height: 13rem;
+    max-width: 13rem;
     top: 1rem;
     left: 1rem;
 }
@@ -13,6 +13,23 @@
     align-items: center;
 }
 .brainImg {
-    height: 15rem;
-    width: 15rem;
+    height: 100%;
+    width: 100%;
 }
+@media screen
+    and (max-width: 1000px) {
+        .tiltContainer {
+            max-height: 8rem;
+            max-width: 8rem;
+            top: .5rem;
+            left: .5rem;
+        }
+    }
+
+@media screen
+    and (max-width: 800px) {
+        .tiltContainer {
+            max-height: 5rem;
+            max-width: 5rem;
+        }
+    }
