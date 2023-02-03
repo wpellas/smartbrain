@@ -116,15 +116,17 @@ class App extends Component{
         { route === 'home'
           ? <div>
               <Logo />
-              <Rank 
-                name={this.state.user.name} 
-                entries={this.state.user.entries}
-              />
-              <ImageLinkForm 
-                onInputchange={this.onInputchange} 
-                onButtonSubmit={this.onButtonSubmit}
-              />
-              <FaceRecognition box={box} imageUrl={imageUrl} />
+              <div className="appContainer">
+                <Rank 
+                  name={this.state.user.name} 
+                  entries={this.state.user.entries}
+                />
+                <ImageLinkForm 
+                  onInputchange={this.onInputchange} 
+                  onButtonSubmit={this.onButtonSubmit}
+                />
+                <FaceRecognition box={box} imageUrl={imageUrl} />
+              </div>
             </div>
           : (
             route === 'signin'
@@ -132,6 +134,9 @@ class App extends Component{
             : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
           )
         }
+        <div className="footer">
+          <p className='footerText'>Made by <a href='https://williampellas.com/'>William Pellas</a>, using <a href='https://reactjs.org/'>React</a> for the 'The Complete Web Developer in 2023: Zero to Mastery' course from Zero to Mastery. Check out this projects GitHub <a href="https://github.com/wpellas/smartbrain">here</a>.</p>
+        </div>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import './ImageLinkForm.css';
 // Collects the passed down functions 
 const ImageLinkForm = ({ onInputchange, onButtonSubmit }) => {
     return (
-       <div className="">
+       <div className="imageLinkFormContainer">
         <p className="f3 white">
             {'This app will detect faces in an image, try inputting a URL in the textfield and hit Detect!'}
         </p>
@@ -12,7 +12,7 @@ const ImageLinkForm = ({ onInputchange, onButtonSubmit }) => {
             <div className="form center pa4 br3 shadow-5">
                 <input className="f4 pa2 w-70 center" type="text" onChange={onInputchange}/>
                 <button 
-                className="w-30 grow f4 link ph3 pv2 dib black bg-light-blue"
+                className="w-30 grow f4 link ph3 pv2 dib white subBtn"
                 onClick={onButtonSubmit}
                 >
                 Detect</button>

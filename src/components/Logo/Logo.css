@@ -1,13 +1,16 @@
 .tiltContainer {
+    position: fixed;
     height: 15rem;
     width: 15rem;
+    top: 1rem;
+    left: 1rem;
 }
 .Tilt {
     background: linear-gradient(90deg, rgba(17,17,17,1) 0%, rgba(34,34,34,1) 50%, rgba(17,17,17,1) 100%);
+    border: 1px solid #00c7c7;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #00c7c7;
 }
 .brainImg {
     height: 15rem;
