@@ -9,3 +9,7 @@ You can register an account which passes the info through an express.js (node) s
 ### Can I try it?
 
 https://williampellas.com/smartbrain/
+
+### Can I see the server code?
+
+https://github.com/wpellas/smartbrain-api
